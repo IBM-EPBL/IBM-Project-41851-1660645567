@@ -1,0 +1,44 @@
+// C++ code
+//
+void setup()
+{
+  pinMode(2,INPUT);
+  Serial.begin(9600);
+  pinMode(7,OUTPUT);
+  pinMode(13,OUTPUT);
+  pinMode(12,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  int p=digitalRead(2);
+  Serial.print("motion:");
+  Serial.println(p);
+  double a=analogRead(A2);
+  Serial.print("analogData:");
+  Serial.println(a);
+  double n=a/1024;
+  double v=n*5;
+  Serial.print("voltage data");
+  Serial.println(v);
+  double k=v-0.5;
+  double c=v*100;
+  Serial.println ("temperature value");
+  Serial.println(c);
+  delay(1000);
+  tone(7,220,100);
+  delay(350);
+  digitalWrite(13,HIGH);
+  Serial.println("13LED-ON");
+  delay(1000);
+  digitalWrite(13,LOW);
+  Serial.println("13LED-OFF");
+  delay(1000);
+  digitalWrite(12,HIGH);
+  Serial.println("12LED-ON");
+  delay(1000);
+  digitalWrite(12,LOW);
+  Serial.println("LED-OFF");
+  delay(1000);
+}
